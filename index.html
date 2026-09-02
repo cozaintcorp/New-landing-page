@@ -16,13 +16,14 @@
   <div class="header-inner">
     <a href="#top" class="logo">cozaint<span class="logo-dot">.</span></a>
     <nav class="main-nav">
-      <a href="#why">Why MARCIA</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#environments">Environments</a>
-      <a href="#evidence">Evidence</a>
-      <a href="#resources">Resources</a>
+      <a href="index.html">Home</a>
+      <a href="marcia.html">Products</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="environments.html">Environments</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="resources.html">Resources</a>
     </nav>
-    <a href="#assessment" class="btn btn-primary btn-small">Request an assessment</a>
+    <a href="assessment.html" class="btn btn-primary btn-small">Request an assessment</a>
   </div>
 </header>
 
@@ -37,15 +38,22 @@
         <h1>Your cameras captured it.<br><span class="accent">Will it still be there when you need it?</span></h1>
         <p class="hero-sub">MARCIA™ helps organizations preserve more of their visual history while reducing dependence on costly, power-hungry primary storage.</p>
         <div class="hero-actions">
-          <a href="#assessment" class="btn btn-primary">Request a MARCIA™ Assessment</a>
-          <a href="#how-it-works" class="btn btn-link">See how it works →</a>
+          <a href="assessment.html" class="btn btn-primary">Request a MARCIA™ Assessment</a>
+          <a href="how-it-works.html" class="btn btn-link">See how it works →</a>
         </div>
         <p class="hero-note">Compatibility validated for your environment</p>
       </div>
       <div class="hero-media">
-        <video class="hero-video" autoplay muted loop playsinline poster="assets/env-security-ops.png">
+        <video class="hero-video" id="heroVideo" muted playsinline poster="assets/env-security-ops.png">
           <source src="assets/marcia-hero-video.mp4" type="video/mp4">
         </video>
+        <video class="hero-video hero-video-logo" id="heroLogo" muted playsinline autoplay>
+          <source src="assets/marcia-logo-animation.mp4" type="video/mp4">
+        </video>
+        <div class="hero-controls">
+          <button class="hero-btn hero-play" id="heroPlayBtn" type="button" aria-label="Play video">▶</button>
+          <button class="hero-btn hero-mute" id="heroMuteBtn" type="button" aria-label="Unmute video">🔇</button>
+        </div>
       </div>
     </div>
   </section>
@@ -88,7 +96,7 @@
 
       <div class="callout-bar">
         <p>What is your current retention window?</p>
-        <a href="#assessment">Find out what could change →</a>
+        <a href="assessment.html">Find out what could change →</a>
       </div>
     </div>
   </section>
@@ -134,7 +142,7 @@
         <p class="eyebrow">How MARCIA™ works</p>
         <h2>One connected lifecycle.<br>Three clear stages.</h2>
         <p>Intelligent Video Lifecycle Management (IVLM) keeps recent video ready, moves retained video under policy, and returns requested history through the operator workflow.</p>
-        <a href="#evidence" class="text-link">Discuss the MARCIA™ architecture →</a>
+        <a href="marcia.html#architecture" class="text-link">Discuss the MARCIA™ architecture →</a>
       </div>
       <div class="how-stages">
         <div class="stage-card">
@@ -214,7 +222,7 @@
       <p class="environments-sub">Explore where surveillance history matters.</p>
     </div>
     <div class="env-grid">
-      <a href="#assessment" class="env-card" style="background-image:url('assets/env-smart-cities.png')">
+      <a href="assessment.html" class="env-card" style="background-image:url('assets/env-smart-cities.png')">
         <span class="env-num">01</span>
         <div class="env-text">
           <h3>Smart cities</h3>
@@ -222,7 +230,7 @@
           <span class="env-link">Explore this environment →</span>
         </div>
       </a>
-      <a href="#assessment" class="env-card" style="background-image:url('assets/env-airports.png')">
+      <a href="assessment.html" class="env-card" style="background-image:url('assets/env-airports.png')">
         <span class="env-num">02</span>
         <div class="env-text">
           <h3>Airports</h3>
@@ -230,7 +238,7 @@
           <span class="env-link">Explore this environment →</span>
         </div>
       </a>
-      <a href="#assessment" class="env-card" style="background-image:url('assets/env-hospitals.png')">
+      <a href="assessment.html" class="env-card" style="background-image:url('assets/env-hospitals.png')">
         <span class="env-num">03</span>
         <div class="env-text">
           <h3>Hospitals</h3>
@@ -238,7 +246,7 @@
           <span class="env-link">Explore this environment →</span>
         </div>
       </a>
-      <a href="#assessment" class="env-card" style="background-image:url('assets/env-warehouses.png')">
+      <a href="assessment.html" class="env-card" style="background-image:url('assets/env-warehouses.png')">
         <span class="env-num">04</span>
         <div class="env-text">
           <h3>Warehouses</h3>
@@ -246,7 +254,7 @@
           <span class="env-link">Explore this environment →</span>
         </div>
       </a>
-      <a href="#assessment" class="env-card" style="background-image:url('assets/env-security-ops.png')">
+      <a href="assessment.html" class="env-card" style="background-image:url('assets/env-security-ops.png')">
         <span class="env-num">05</span>
         <div class="env-text">
           <h3>Security operations</h3>
@@ -265,7 +273,7 @@
         <h2>Bring the future of surveillance storage to your customers.</h2>
         <p>Cozaint works with security and surveillance systems integrators, Value-Added Resellers (VARs), Managed Service Providers (MSPs), storage and data-protection distributors, and consultants serving retention-heavy industries.</p>
       </div>
-      <a href="#assessment" class="btn btn-primary">Explore the Partner Program</a>
+      <a href="assessment.html" class="btn btn-primary">Explore the Partner Program</a>
     </div>
   </section>
 
@@ -285,7 +293,7 @@
         <p class="eyebrow">Go deeper</p>
         <h2>See the complete MARCIA™ architecture.</h2>
         <p>Explore the three-tier model, lifecycle policy, metadata continuity and operating principles behind long-term visual retention.</p>
-        <a href="assets/architecture.png" target="_blank" class="btn btn-secondary">Preview the IVLM eBook</a>
+        <a href="resources.html" class="btn btn-secondary">Preview the IVLM eBook</a>
       </div>
     </div>
   </section>
@@ -350,21 +358,21 @@
     <div class="footer-cols">
       <div>
         <h4>MARCIA™</h4>
-        <a href="#why">Why MARCIA</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#environments">Environments</a>
+        <a href="index.html">Why MARCIA</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="environments.html">Environments</a>
       </div>
       <div>
         <h4>Resources</h4>
-        <a href="#resources">IVLM eBook</a>
-        <a href="#assessment">Request an assessment</a>
-        <a href="#evidence">Evidence</a>
+        <a href="resources.html">IVLM eBook</a>
+        <a href="assessment.html">Request an assessment</a>
+        <a href="evidence.html">Evidence</a>
       </div>
       <div>
         <h4>Company</h4>
         <a href="#top">About Cozaint</a>
-        <a href="#evidence">Technology Partners</a>
-        <a href="#assessment">Become a Partner</a>
+        <a href="evidence.html">Technology Partners</a>
+        <a href="assessment.html">Become a Partner</a>
       </div>
     </div>
   </div>
