@@ -157,7 +157,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-actions .btn-link { color: var(--white); border-color: rgba(255,255,255,0.5); }
 .hero-note { font-size: 13px; color: #7f8f87; text-transform: uppercase; letter-spacing: 0.04em; }
 
-.hero-media-group { position: relative; min-height: 560px; }
+.hero-media-group { position: relative; min-height: 820px; }
 .hero-logo-badge {
   position: absolute;
   top: 0; left: 8%;
