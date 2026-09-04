@@ -27,10 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var playBig = document.getElementById('heroPlayBig');
   var muteBtn = document.getElementById('heroMuteBtn');
   if (mainVideo && playBig && muteBtn) {
-  playBig.addEventListener('click', function () {
-  if (mainVideo.ended) { mainVideo.currentTime = 0; }
-  mainVideo.play();
-  playBig.classList.add('is-playing');
+ playBig.addEventListener('click', function () {
+  if (mainVideo.paused || mainVideo.ended) {
+    if (mainVideo.ended) { mainVideo.currentTime = 0; }
+    mainVideo.play();
+  } else {
+    mainVideo.pause();
+  }
 });
     mainVideo.addEventListener('ended', function () {
       playBig.classList.remove('is-playing');
