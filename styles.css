@@ -157,31 +157,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-actions .btn-link { color: var(--white); border-color: rgba(255,255,255,0.5); }
 .hero-note { font-size: 13px; color: #7f8f87; text-transform: uppercase; letter-spacing: 0.04em; }
 
-.hero-media-group { position: relative; min-height: 320px; }
+.hero-media-group { position: relative; min-height: 560px; }
 .hero-logo-badge {
   position: absolute;
   top: 0; left: 8%;
-  width: 320px;
+  width: 220px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 .hero-logo-video { width: 100%; display: block; }
-  position: absolute;
-  top: 0; left: 26%;
-  width: 260px;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-.hero-logo-video { width: 100%; display: block; }
-.hero-logo-word { font-family: var(--font-body); font-weight: 800; font-size: 22px; color: var(--forest-deep); letter-spacing: -0.01em; }
-.hero-logo-word sup { font-size: 11px; }
 .hero-media {
- .hero-media {
   position: absolute;
-  top: 260px; right: -40px;
-  width: 100%;
+  top: 220px; right: 0;
+  width: 78%;
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.12);
@@ -189,6 +178,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   aspect-ratio: 16/9;
   background: #000;
 }
+.hero-video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-play-big {
   position: absolute;
   top: 50%; left: 50%;
@@ -221,9 +211,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .hero-btn:hover { background: rgba(10,32,25,0.9); }
 .hero-mute {
-.hero-mute {
   position: absolute;
-  bottom: -46px; left: 0;
+  bottom: -44px; left: 0;
   z-index: 3;
 }
 /* ============================================
