@@ -213,11 +213,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .hero-btn:hover { background: rgba(10,32,25,0.9); }
 .hero-mute {
+.hero-mute {
   position: absolute;
-  bottom: 10px; left: 10px;
+  bottom: -46px; left: 0;
   z-index: 3;
 }
-
 /* ============================================
    Retention gap
    ============================================ */
