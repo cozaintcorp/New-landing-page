@@ -158,18 +158,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-note { font-size: 13px; color: #7f8f87; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .hero-logo-badge {
-  position: absolute;
-  top: 0; left: 0;
-  width: 85%;
+  width: 70%;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 .hero-logo-video { width: 100%; display: block; }
 .hero-media {
-  position: absolute;
-  top: 260px; left: 0;
-  width: 100%;
+  position: relative;
+  width: 90%;
+  margin: 24px 0 0 10%;
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow: 0 30px 80px rgba(0,0,0,0.45);
   aspect-ratio: 16/9;
@@ -193,7 +191,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   z-index: 3;
 }
 .hero-play-big:hover { background: rgba(10,32,25,0.9); }
-
 .hero-btn {
   width: 32px; height: 32px;
   border-radius: 50%;
