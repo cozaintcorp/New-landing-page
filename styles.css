@@ -166,8 +166,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-logo-video { width: 100%; display: block; }
 .hero-media {
   position: relative;
-  width: 90%;
-  margin: 24px 0 0 10%;
+  width: 95%;
+  margin: 70px 0 0 150%;
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow: 0 30px 80px rgba(0,0,0,0.45);
   aspect-ratio: 16/9;
