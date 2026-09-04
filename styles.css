@@ -156,7 +156,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-actions { display: flex; align-items: center; gap: 28px; margin: 28px 0 22px; flex-wrap: wrap; }
 .hero-actions .btn-link { color: var(--white); border-color: rgba(255,255,255,0.5); }
 .hero-note { font-size: 13px; color: #7f8f87; text-transform: uppercase; letter-spacing: 0.04em; }
-
+.hero-media-group { display: flex; flex-direction: column; gap: 24px; }
 .hero-logo-badge {
   width: 70%;
   border-radius: 6px;
