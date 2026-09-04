@@ -160,6 +160,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-media-group { position: relative; min-height: 320px; }
 .hero-logo-badge {
   position: absolute;
+  top: 0; left: 8%;
+  width: 320px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+.hero-logo-video { width: 100%; display: block; }
+  position: absolute;
   top: 0; left: 26%;
   width: 260px;
   border-radius: 6px;
