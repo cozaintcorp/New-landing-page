@@ -157,11 +157,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-actions .btn-link { color: var(--white); border-color: rgba(255,255,255,0.5); }
 .hero-note { font-size: 13px; color: #7f8f87; text-transform: uppercase; letter-spacing: 0.04em; }
 
-.hero-media-group { position: relative; min-height: 820px; }
 .hero-logo-badge {
   position: absolute;
   top: 0; left: 8%;
-  width: 220px;
+  width: 460px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
