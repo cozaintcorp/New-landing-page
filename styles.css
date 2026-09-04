@@ -193,7 +193,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   z-index: 3;
 }
 .hero-play-big:hover { background: rgba(10,32,25,0.9); }
-.hero-play-big.is-playing { opacity: 0; pointer-events: none; }
+
 .hero-btn {
   width: 32px; height: 32px;
   border-radius: 50%;
