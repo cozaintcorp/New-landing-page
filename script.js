@@ -20,19 +20,21 @@ document.addEventListener('DOMContentLoaded', function () {
       // CRM webhook, etc.) before this goes live to real visitors.
     });
   }
-
   // Hero: big centered play button starts the narrated video.
   // Mute button toggles sound. Video shows a replay control at the end.
   var mainVideo = document.getElementById('heroVideo');
   var playBig = document.getElementById('heroPlayBig');
   var muteBtn = document.getElementById('heroMuteBtn');
   if (mainVideo && playBig && muteBtn) {
-playBig.addEventListener('click', function () {
-  if (mainVideo.paused || mainVideo.ended) {
-    if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) { mainVideo.currentTime = 0; }
-    mainVideo.play();
-  } else {
- mainVideo.addEventListener('timeupdate', function () {
+    playBig.addEventListener('click', function () {
+      if (mainVideo.paused || mainVideo.ended) {
+        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) { mainVideo.currentTime = 0; }
+        mainVideo.play();
+      } else {
+        mainVideo.pause();
+      }
+    });
+    mainVideo.addEventListener('timeupdate', function () {
       if (mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - 0.5 && !mainVideo.paused) {
         mainVideo.pause();
         playBig.classList.remove('is-playing');
