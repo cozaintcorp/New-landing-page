@@ -146,6 +146,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: start;
 }
 .hero-copy .eyebrow { white-space: nowrap; }
+.hero-copy { min-width: 0; }
 .hero-copy h1 {
   color: var(--white);
   font-size: clamp(38px, 4.6vw, 58px);
