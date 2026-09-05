@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     playBig.addEventListener('click', function () {
       if (mainVideo.paused || mainVideo.ended) {
-        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
-          mainVideo.pause();
-          var playAfterSeek = function () {
-            mainVideo.removeEventListener('seeked', playAfterSeek);
-            mainVideo.play();
-          };
+       if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
+          mainVideo.load();
+          mainVideo.play();
+        } else {
+          mainVideo.play();
+        };
           mainVideo.addEventListener('seeked', playAfterSeek);
           mainVideo.currentTime = 0;
         } else {
