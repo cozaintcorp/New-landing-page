@@ -26,26 +26,35 @@ document.addEventListener('DOMContentLoaded', function () {
   var playBig = document.getElementById('heroPlayBig');
   var muteBtn = document.getElementById('heroMuteBtn');
   if (mainVideo && playBig && muteBtn) {
+    function showReplayButton() {
+      playBig.classList.remove('is-playing');
+      playBig.textContent = '↻';
+    }
     playBig.addEventListener('click', function () {
       if (mainVideo.paused || mainVideo.ended) {
-        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) { mainVideo.currentTime = 0; }
+        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
+          mainVideo.currentTime = 0;
+        }
         mainVideo.play();
       } else {
         mainVideo.pause();
       }
     });
+    mainVideo.addEventListener('ended', showReplayButton);
     mainVideo.addEventListener('timeupdate', function () {
       if (mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - 0.5 && !mainVideo.paused) {
         mainVideo.pause();
-        playBig.classList.remove('is-playing');
-        playBig.textContent = '↻';
+        showReplayButton();
       }
     });
     mainVideo.addEventListener('pause', function () {
-      if (!mainVideo.ended) { playBig.classList.remove('is-playing'); }
+      if (mainVideo.currentTime < mainVideo.duration - 0.5) {
+        playBig.classList.remove('is-playing');
+      }
     });
     mainVideo.addEventListener('play', function () {
       playBig.classList.add('is-playing');
+      playBig.textContent = '▶';
     });
     muteBtn.addEventListener('click', function () {
       mainVideo.muted = !mainVideo.muted;
