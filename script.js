@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     playBig.addEventListener('click', function () {
       if (mainVideo.paused || mainVideo.ended) {
-      if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
+        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
           mainVideo.pause();
           var playAfterSeek = function () {
             mainVideo.removeEventListener('seeked', playAfterSeek);
