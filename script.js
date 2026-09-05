@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     mainVideo.pause();
   }
 });
-  mainVideo.addEventListener('timeupdate', function () {
-      if (mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - 0.5) {
+ mainVideo.addEventListener('timeupdate', function () {
+      if (mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - 0.5 && !mainVideo.paused) {
+        mainVideo.pause();
         playBig.classList.remove('is-playing');
         playBig.textContent = '↻';
       }
