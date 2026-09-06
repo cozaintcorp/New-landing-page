@@ -20,46 +20,60 @@ document.addEventListener('DOMContentLoaded', function () {
       // CRM webhook, etc.) before this goes live to real visitors.
     });
   }
+
   // Hero: big centered play button starts the narrated video.
   // Mute button toggles sound. Video shows a replay control at the end.
   var mainVideo = document.getElementById('heroVideo');
   var playBig = document.getElementById('heroPlayBig');
   var muteBtn = document.getElementById('heroMuteBtn');
+
   if (mainVideo && playBig && muteBtn) {
-    function showReplayButton() {
-      playBig.classList.remove('is-playing');
-      playBig.textContent = '↻';
+    var NEAR_END = 0.5;
+
+    function isNearEnd() {
+      return mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - NEAR_END;
     }
+
+    // Single source of truth: look at the video's actual state right now
+    // and make the button match it. Called from every relevant event
+    // instead of each event trying to independently track state.
+    function syncButton() {
+      if (mainVideo.paused && isNearEnd()) {
+        playBig.textContent = '↻';
+        playBig.classList.remove('is-playing');
+      } else if (mainVideo.paused) {
+        playBig.textContent = '▶';
+        playBig.classList.remove('is-playing');
+      } else {
+        playBig.textContent = '▶';
+        playBig.classList.add('is-playing');
+      }
+    }
+
     playBig.addEventListener('click', function () {
-      if (mainVideo.paused || mainVideo.ended) {
-        if (mainVideo.ended || mainVideo.currentTime >= mainVideo.duration - 0.5) {
-          mainVideo.load();
-          mainVideo.play();
-        } else {
-          mainVideo.play();
+      if (mainVideo.paused) {
+        if (isNearEnd()) {
+          mainVideo.currentTime = 0;
         }
+        mainVideo.play();
       } else {
         mainVideo.pause();
       }
     });
-    mainVideo.addEventListener('ended', showReplayButton);
+
+    // Force a pause once we're basically at the end, since this file's
+    // 'ended' event is unreliable in some browsers.
     mainVideo.addEventListener('timeupdate', function () {
-      if (mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - 0.5 && !mainVideo.paused) {
+      if (isNearEnd() && !mainVideo.paused) {
         mainVideo.pause();
-        showReplayButton();
       }
+      syncButton();
     });
-    mainVideo.addEventListener('pause', function () {
-      if (mainVideo.currentTime < mainVideo.duration - 0.5) {
-        playBig.classList.remove('is-playing');
-      }
-    });
-   mainVideo.addEventListener('play', function () {
-      if (mainVideo.currentTime < mainVideo.duration - 0.5) {
-        playBig.classList.add('is-playing');
-        playBig.textContent = '▶';
-      }
-    });
+
+    mainVideo.addEventListener('play', syncButton);
+    mainVideo.addEventListener('pause', syncButton);
+    mainVideo.addEventListener('ended', syncButton);
+
     muteBtn.addEventListener('click', function () {
       mainVideo.muted = !mainVideo.muted;
       muteBtn.textContent = mainVideo.muted ? '🔇' : '🔊';
