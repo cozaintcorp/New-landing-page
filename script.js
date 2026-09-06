@@ -50,12 +50,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    playBig.addEventListener('click', function () {
+   playBig.addEventListener('click', function () {
       if (mainVideo.paused) {
         if (isNearEnd()) {
+          mainVideo.pause();
+          var playAfterSeek = function () {
+            mainVideo.removeEventListener('seeked', playAfterSeek);
+            mainVideo.play();
+          };
+          mainVideo.addEventListener('seeked', playAfterSeek);
           mainVideo.currentTime = 0;
+        } else {
+          mainVideo.play();
         }
-        mainVideo.play();
       } else {
         mainVideo.pause();
       }
