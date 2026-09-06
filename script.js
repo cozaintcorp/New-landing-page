@@ -52,14 +52,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
    playBig.addEventListener('click', function () {
       if (mainVideo.paused) {
-        if (isNearEnd()) {
+       if (isNearEnd()) {
           mainVideo.pause();
-          var playAfterSeek = function () {
-            mainVideo.removeEventListener('seeked', playAfterSeek);
-            mainVideo.play();
+          var playWhenReady = function () {
+            if (mainVideo.readyState >= 2) {
+              mainVideo.removeEventListener('canplay', playWhenReady);
+              mainVideo.removeEventListener('loadeddata', playWhenReady);
+              mainVideo.play();
+            }
           };
-          mainVideo.addEventListener('seeked', playAfterSeek);
+          mainVideo.addEventListener('canplay', playWhenReady);
+          mainVideo.addEventListener('loadeddata', playWhenReady);
           mainVideo.currentTime = 0;
+          mainVideo.load();
         } else {
           mainVideo.play();
         }
