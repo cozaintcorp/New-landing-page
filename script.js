@@ -23,72 +23,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Hero: big centered play button starts the narrated video.
   // Mute button toggles sound. Video shows a replay control at the end.
-  var mainVideo = document.getElementById('heroVideo');
+  // Uses two video elements swapped on replay, since this file has proven
+  // unreliable when seeking the same element back to time 0 in-browser.
+  var videoA = document.getElementById('heroVideo');
+  var videoB = document.getElementById('heroVideoAlt');
   var playBig = document.getElementById('heroPlayBig');
   var muteBtn = document.getElementById('heroMuteBtn');
 
-  if (mainVideo && playBig && muteBtn) {
+  if (videoA && videoB && muteBtn) {
+    var current = videoA;
+    var other = videoB;
     var NEAR_END = 0.5;
 
-    function isNearEnd() {
-      return mainVideo.duration && mainVideo.currentTime >= mainVideo.duration - NEAR_END;
+    function isNearEnd(v) {
+      return v.duration && v.currentTime >= v.duration - NEAR_END;
     }
 
-    // Single source of truth: look at the video's actual state right now
-    // and make the button match it. Called from every relevant event
-    // instead of each event trying to independently track state.
-    function syncButton() {
-      if (mainVideo.paused && isNearEnd()) {
-        playBig.textContent = '↻';
-        playBig.classList.remove('is-playing');
-      } else if (mainVideo.paused) {
-        playBig.textContent = '▶';
-        playBig.classList.remove('is-playing');
-      } else {
-        playBig.textContent = '▶';
-        playBig.classList.add('is-playing');
-      }
+    function showPlayIcon() {
+      playBig.textContent = '▶';
+      playBig.classList.remove('is-playing');
+    }
+    function showReplayIcon() {
+      playBig.textContent = '↻';
+      playBig.classList.remove('is-playing');
+    }
+    function showPlayingState() {
+      playBig.textContent = '▶';
+      playBig.classList.add('is-playing');
     }
 
-   playBig.addEventListener('click', function () {
-      if (mainVideo.paused) {
-       if (isNearEnd()) {
-          mainVideo.pause();
-          var playWhenReady = function () {
-            if (mainVideo.readyState >= 2) {
-              mainVideo.removeEventListener('canplay', playWhenReady);
-              mainVideo.removeEventListener('loadeddata', playWhenReady);
-              mainVideo.play();
-            }
-          };
-          mainVideo.addEventListener('canplay', playWhenReady);
-          mainVideo.addEventListener('loadeddata', playWhenReady);
-          mainVideo.currentTime = 0;
-          mainVideo.load();
-        } else {
-          mainVideo.play();
-        }
-      } else {
-        mainVideo.pause();
+    current.addEventListener('timeupdate', function () {
+      if (isNearEnd(current) && !current.paused) {
+        current.pause();
+        showReplayIcon();
       }
     });
 
-    // Force a pause once we're basically at the end, since this file's
-    // 'ended' event is unreliable in some browsers.
-    mainVideo.addEventListener('timeupdate', function () {
-      if (isNearEnd() && !mainVideo.paused) {
-        mainVideo.pause();
+    playBig.addEventListener('click', function () {
+      if (current.paused && isNearEnd(current)) {
+        // Swap to the other (fresh, already-at-0) video element.
+        current.style.display = 'none';
+        other.style.display = '';
+        other.muted = current.muted;
+        var prev = current;
+        current = other;
+        other = prev;
+        current.currentTime = 0;
+        current.play();
+        current.addEventListener('timeupdate', function onTime() {
+          if (isNearEnd(current) && !current.paused) {
+            current.pause();
+            showReplayIcon();
+          }
+        });
+      } else if (current.paused) {
+        current.play();
+      } else {
+        current.pause();
       }
-      syncButton();
     });
 
-    mainVideo.addEventListener('play', syncButton);
-    mainVideo.addEventListener('pause', syncButton);
-    mainVideo.addEventListener('ended', syncButton);
+    current.addEventListener('play', showPlayingState);
+    current.addEventListener('pause', function () {
+      if (!isNearEnd(current)) { showPlayIcon(); }
+    });
 
     muteBtn.addEventListener('click', function () {
-      mainVideo.muted = !mainVideo.muted;
-      muteBtn.textContent = mainVideo.muted ? '🔇' : '🔊';
+      var muted = !current.muted;
+      videoA.muted = muted;
+      videoB.muted = muted;
+      muteBtn.textContent = muted ? '🔇' : '🔊';
     });
   }
 });
