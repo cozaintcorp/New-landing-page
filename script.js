@@ -54,9 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
         playBig.classList.remove('is-playing');
       }
     });
-    mainVideo.addEventListener('play', function () {
-      playBig.classList.add('is-playing');
-      playBig.textContent = '▶';
+   mainVideo.addEventListener('play', function () {
+      if (mainVideo.currentTime < mainVideo.duration - 0.5) {
+        playBig.classList.add('is-playing');
+        playBig.textContent = '▶';
+      }
     });
     muteBtn.addEventListener('click', function () {
       mainVideo.muted = !mainVideo.muted;
