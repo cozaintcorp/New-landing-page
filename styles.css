@@ -139,7 +139,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 96px 32px 110px;
+  padding: 96px 32px 60px;
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   gap: 56px;
